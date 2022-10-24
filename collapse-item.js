@@ -18,6 +18,14 @@ class CollapseItem extends HTMLElement{
         shadow.appendChild(style)
         shadow.appendChild(cloneTemplate);
     }
+
+    static get observedAttributes() { // 监控属性的变化
+        return ['active']
+    }
+    // update
+    attributeChangedCallback(key, oldVal, newVal) {
+        console.info('child',key,oldVal,newVal)
+    }
 }
 
 export default CollapseItem
