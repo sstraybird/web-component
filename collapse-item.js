@@ -5,7 +5,16 @@ class CollapseItem extends HTMLElement{
         let tmpl = document.getElementById('collapse_item_tmpl');
         let cloneTemplate = tmpl.content.cloneNode(true);
         let style = document.createElement('style');
-
+        style.textContent = `
+            .title{
+                background:#f1f1f1;
+                line-height:35px;
+                height:35px;
+            }
+            .content{
+                font-size:14px;
+            }
+        `
         shadow.appendChild(style)
         shadow.appendChild(cloneTemplate);
     }

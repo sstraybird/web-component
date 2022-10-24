@@ -13,6 +13,9 @@ class Collapse extends HTMLElement{
                 border-radius:5px;
                 width:100%;
             }
+             .zf-collapse{
+                width:100%;
+            }
         `
         shadow.appendChild(style);
         shadow.appendChild(cloneTemplate);
