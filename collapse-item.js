@@ -17,14 +17,26 @@ class CollapseItem extends HTMLElement{
         `
         shadow.appendChild(style)
         shadow.appendChild(cloneTemplate);
+        this.titleEle = shadow.querySelector('.title');
     }
 
     static get observedAttributes() { // 监控属性的变化
-        return ['active']
+        return ['active','title','name']
     }
     // update
     attributeChangedCallback(key, oldVal, newVal) {
         console.info('child',key,oldVal,newVal)
+        switch (key) {
+            case 'active':
+                this.activeList = JSON.parse(newVal); // 子组件接受父组件的数据
+                break;
+            case 'title':
+                this.titleEle.innerHTML = newVal; // 接受到title属性 作为dom的title
+                break;
+            case 'name':
+                this.name = newVal
+                break;
+        }
     }
 }
 
