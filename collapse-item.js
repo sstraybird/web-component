@@ -5,6 +5,7 @@ class CollapseItem extends HTMLElement{
         let tmpl = document.getElementById('collapse_item_tmpl');
         let cloneTemplate = tmpl.content.cloneNode(true);
         let style = document.createElement('style');
+        this.isShow = true; // 标识自己是否需要显示
         style.textContent = `
             .title{
                 background:#f1f1f1;
@@ -18,6 +19,7 @@ class CollapseItem extends HTMLElement{
         shadow.appendChild(style)
         shadow.appendChild(cloneTemplate);
         this.titleEle = shadow.querySelector('.title');
+
     }
 
     static get observedAttributes() { // 监控属性的变化
@@ -36,6 +38,11 @@ class CollapseItem extends HTMLElement{
             case 'name':
                 this.name = newVal
                 break;
+        }
+        let name = this.name;
+        if (this.activeList && name) {
+            this.isShow = this.activeList.includes(name);
+            this.shadowRoot.querySelector('.content').style.display =  this.isShow ? 'block' : 'none'
         }
     }
 }
