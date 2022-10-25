@@ -20,6 +20,15 @@ class CollapseItem extends HTMLElement{
         shadow.appendChild(cloneTemplate);
         this.titleEle = shadow.querySelector('.title');
 
+        this.titleEle.addEventListener('click',()=>{
+            // 如果将结果传递给父亲  组件通信？
+            document.querySelector('zf-collapse').dispatchEvent(new CustomEvent('changeName',{
+                detail:{
+                    name:this.getAttribute('name'),
+                    isShow:this.isShow
+                }
+            }))
+        })
     }
 
     static get observedAttributes() { // 监控属性的变化

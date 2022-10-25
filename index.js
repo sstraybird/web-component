@@ -22,3 +22,7 @@ document.querySelector('zf-collapse').addEventListener('changeName',(e)=>{
     }
     document.querySelector('zf-collapse').setAttribute('active',JSON.stringify(defaultActive));
 });
+
+// shadowDOM 完全隔离
+// 组件间的通信 属性，事件
+// customEvent  -> webcomponent 兼容性差，没有自动更新机制
